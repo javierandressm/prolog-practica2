@@ -1,4 +1,3 @@
-
 % Inventario por marcas
 
 vehicle(toyota, corolla, sedan, 2500, 1974).
@@ -84,7 +83,6 @@ report_brand_year(Inventory) :-
           vehicle(Brand, Ref, _, _, Year),
           Inventory).
 
-
 % Utilidad: suma de precios
 
 sum_prices([], 0).
@@ -99,19 +97,18 @@ report_type_budget(Type, Budget, (Vehicles, Total)) :-
             Vehicles),
     sum_prices(Vehicles, Total).
 
-% Predicado meet_budget que pide el enunciado
+% Predicado meet_budget
 meet_budget(Reference, BudgetMax) :-
     vehicle(_, Reference, _, Price, _),
     Price =< BudgetMax.
 
-% Predicado generate_report que pide el enunciado
+% Predicado generate_report corregido
 generate_report(Brand, Type, Budget, (Vehicles, TotalValue)) :-
-    findall((Brand, Ref, Price, Year),
+    findall((Ref, Year, Price),
             (vehicle(Brand, Ref, Type, Price, Year),
              Price =< Budget),
             Vehicles),
-    sum_prices(Vehicles, TotalValue),
-    TotalValue =< 1000000.
+    sum_prices(Vehicles, TotalValue).
 
 
 % CASOS DE PRUEBA
@@ -132,6 +129,3 @@ case2(Result) :-
 % Caso 3: Calcular el total de sedanes sin exceder $500,000
 case3((Vehicles, Total)) :-
     report_type_budget(sedan, 500000, (Vehicles, Total)).
-
-
-
