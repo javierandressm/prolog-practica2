@@ -1,3 +1,7 @@
+% Javier Sierra, Sebastian Roldon, Miguel Alvarez
+
+
+
 % Inventario por marcas
 
 vehicle(toyota, corolla, sedan, 2500, 1974).
